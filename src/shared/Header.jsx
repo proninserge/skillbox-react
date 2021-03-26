@@ -4,8 +4,7 @@ import { hot } from 'react-hot-loader/root';
 function HeaderComponent() {
     return (
         <header>
-            <h1>Hello!</h1>
-            <h2>It's me</h2>
+            <h1>Hello React!</h1>
         </header>
     );
 }
