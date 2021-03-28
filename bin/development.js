@@ -26,23 +26,17 @@ hmrServer.listen(3031, 'localhost', () => {
 
 const compiler = webpack(webpackServerConfig);
 
-compiler.run((err) => {
+compiler.watch({}, (err) => {
     if (err) {
         console.log('Compilation failed: ', err);
     }
+    console.log('Successfully compiled');
+});
 
-    compiler.watch({}, (err) => {
-        if (err) {
-            console.log('Compilation failed: ', err);
-        }
-        console.log('Successfully compiled');
-    });
-
-    nodemon({
-        script: path.resolve(__dirname, '../dist/server/server.js'),
-        watch: [
-            path.resolve(__dirname, '../dist/server'),
-            path.resolve(__dirname, '../dist/client')
-        ],
-    });
+nodemon({
+    script: path.resolve(__dirname, '../dist/server/server.js'),
+    watch: [
+        path.resolve(__dirname, '../dist/server'),
+        path.resolve(__dirname, '../dist/client')
+    ],
 });
