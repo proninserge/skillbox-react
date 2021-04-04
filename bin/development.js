@@ -20,7 +20,7 @@ hmrServer.use(webpackHotMiddleware(clientCompiler, {
     path: '/static/__webpack_hmr',
 }));
 
-hmrServer.listen(3031, 'localhost', () => {
+hmrServer.listen(3031, '0.0.0.0', () => {
     console.log('Hmr Server successfully started');
 });
 
