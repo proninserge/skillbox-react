@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: study-container
+    image: react-app:study
+    volumes: 
+      - ".:/app"
+      - "/app/node_modules"
+    ports: 
+      - "3030:3030"
+      - "3031:3031"
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
