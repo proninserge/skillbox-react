@@ -1,15 +1,20 @@
 const path = require('path');
 const {HotModuleReplacementPlugin} = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV; // for win npm i -g win-node-env
 const IS_DEV = NODE_ENV === 'development';
+const GLOBAL_CSS_REGEXP = /\.main\.global\.less$/;
 
 module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
             'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
+
+            '@': path.resolve(__dirname, '../src/'),
+            '@components': path.resolve(__dirname, '../src/shared'),
         },
     },
     mode: NODE_ENV ? NODE_ENV : 'development',
@@ -40,11 +45,19 @@ module.exports = {
                         },
                     }
                 }, 'less-loader'],
+                exclude: GLOBAL_CSS_REGEXP,
+            },
+            {
+                test: GLOBAL_CSS_REGEXP,
+                use: ['style-loader', 'css-loader', 'less-loader']
             },
         ],
     },
     plugins: [
         new HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
+        new webpack.ProvidePlugin({
+            'React': 'react',
+        }),
     ],
 };

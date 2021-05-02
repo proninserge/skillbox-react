@@ -1,0 +1,81 @@
+@import '~@/variables.global.less';
+
+.cardHeader {
+    padding: 22px 20px 13px;
+
+    @media all and (min-width: 1024px) {
+        order: 2;
+        margin-left: 38px;
+        max-width: 540px;
+
+        padding: 0;
+    }
+}
+
+.metaData,
+.userData {
+    display: flex;
+    align-items: center;
+}
+
+.userData {
+    margin-right: 3px;
+}
+
+.userAvatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    margin-right: 7px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.userLink {
+    color: @orange;
+}
+
+.timeStamp {
+    display: flex;
+    align-items: center;
+
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #999999;
+}
+
+.title {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    height: 41px;
+}
+
+.postLink {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mobileLabel {
+    display: none;
+
+    @media all and (min-width: 1024px) {
+        display: inline-block;
+        margin-right: 2px;
+        color: #999999;
+    }
+}

@@ -1,7 +1,9 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV; // for win npm i -g win-node-env
+const GLOBAL_CSS_REGEXP = /\.main\.global\.less$/;
 
 module.exports = {
     target: "node",
@@ -13,6 +15,10 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+        alias: {
+            '@': path.resolve(__dirname, '../src/'),
+            '@components': path.resolve(__dirname, '../src/shared'),
+        },
     },
     externals: [nodeExternals()],
     module: {
@@ -33,10 +39,20 @@ module.exports = {
                         },
                     }
                 }, 'less-loader'],
+                exclude: GLOBAL_CSS_REGEXP,
+            },
+            {
+                test: GLOBAL_CSS_REGEXP,
+                use: ['css-loader', 'less-loader']
             }
         ],
     },
     optimization: {
         minimize: false,
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            'React': 'react',
+        }),
+    ],
 };

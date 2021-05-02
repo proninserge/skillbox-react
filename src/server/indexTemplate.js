@@ -4,6 +4,7 @@ const indexTemplate = (content) => `
         <head>
             <meta charset="UTF-8">
             <title>React Project</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <script src="/static/client.js" type="application/javascript"></script>
         </head>
         <body>
