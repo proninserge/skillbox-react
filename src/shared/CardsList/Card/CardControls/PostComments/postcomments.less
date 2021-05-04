@@ -1,0 +1,27 @@
+@import '~@/variables.global.less';
+
+.postComments {
+    display: flex;
+    align-items: center;
+
+    @media all and (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.toComments {
+    font-size: 10px;
+    line-height: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: @greyD9;
+}
+
+.commentsAmount {
+    margin-left: 5px;
+}

@@ -1,0 +1,22 @@
+@import '~@/variables.global.less';
+
+.cardMenu {
+    position: absolute;
+    top: 17px;
+    right: 14px;
+
+    @media all and (min-width: 1024px) {
+        top: 50%;
+        transform: translateY(-50%);
+        right: 130px;
+    }
+}
+
+.menuBtn {
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 10px;
+    line-height: 10px;
+    background-color: @greyD9;
+    border-radius: 50%;
+}
