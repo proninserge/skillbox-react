@@ -1,0 +1,37 @@
+@import '~@/variables.global.less';
+
+.postDropdownItem {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    color: @grey99;
+
+    &::before {
+        content: "";
+        width: 80%;
+        height: 1px;
+        background-color: #ECECEC;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:first-of-type::before,
+    &:last-of-type::before {
+        display: none;
+    }
+
+    & span {
+        line-height: 0;
+        margin-right: 6px;
+    }
+
+    &:last-of-type {
+        justify-content: center;
+        background-color: @greyD9;
+    }
+}
