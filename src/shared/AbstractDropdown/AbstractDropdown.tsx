@@ -1,5 +1,5 @@
 import styles from './abstractdropdown.less';
-import {NOOP} from '@utils/constants.js';
+import {NOOP} from '@utils/constants';
 
 interface IDropdownProps {
     button: React.ReactNode;
