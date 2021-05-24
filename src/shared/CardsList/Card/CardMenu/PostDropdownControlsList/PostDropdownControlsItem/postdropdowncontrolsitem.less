@@ -13,7 +13,7 @@
         content: "";
         width: 80%;
         height: 1px;
-        background-color: #ECECEC;
+        background-color: @greyEC;
         position: absolute;
         top: 0;
         left: 50%;
@@ -25,7 +25,7 @@
         display: none;
     }
 
-    & span {
+    & svg {
         line-height: 0;
         margin-right: 6px;
     }
@@ -33,5 +33,14 @@
     &:last-of-type {
         justify-content: center;
         background-color: @greyD9;
+        color: @grey66;
+    }
+
+    @media all and (max-width: 1024px) {
+        &[data-control="comments"],
+        &[data-control="share"],
+        &[data-control="save"] {
+            display: none;
+        }
     }
 }

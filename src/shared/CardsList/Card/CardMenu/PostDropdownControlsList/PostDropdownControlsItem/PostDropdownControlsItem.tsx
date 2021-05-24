@@ -1,14 +1,26 @@
 import styles from './postdropdowncontrolsitem.less';
-import {renderSvgDirectly} from '@utils/utils';
+import {clickOnPostControl} from '@utils/utils';
+import {PostDropdownIconsSprite} from '@components/Icons/PostDropdownIconsSprite';
+import TPostControl from '@utils/react/types/TPostControl';
 
-interface IDropdownControlsItemProps {
+interface IPostDropdownControlsItemProps {
     content: string;
-    icon?: string;
-}
+    id: TPostControl;
+    postId?: string;
+};
 
-export function PostDropdownControlsItem(props: IDropdownControlsItemProps) {
-    const {icon, content} = props;
+export function PostDropdownControlsItem(props:  IPostDropdownControlsItemProps) {
+    const {content, id, postId} = props;
+
     return (
-        <li className={styles.postDropdownItem}>{icon && renderSvgDirectly(icon)} {content}</li>
+        <li 
+            className={styles.postDropdownItem}
+            data-control={id}
+            onClick={() => clickOnPostControl(id, postId)}
+        >
+
+            <PostDropdownIconsSprite id={id}/> {content}
+
+        </li>
     );
 }
