@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render snapshot 1`] = `
+<li
+  className="card"
+>
+  <CardHeader />
+  <div
+    className="postPreview"
+  >
+    <img
+      alt="Post preview"
+      src="https://cdn.dribbble.com/users/730703/screenshots/15503300/media/384ddbf6e843acf7457b5946f053df76.jpg?compress=1&resize=300x225"
+    />
+  </div>
+  <CardMenu
+    postId="123"
+  />
+  <CardControls />
+</li>
+`;

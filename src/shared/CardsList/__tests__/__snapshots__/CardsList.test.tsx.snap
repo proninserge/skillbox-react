@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardsList should render snapshot 1`] = `
+<ul
+  className="cardsList"
+>
+  <Card />
+</ul>
+`;
