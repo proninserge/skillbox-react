@@ -1,11 +1,13 @@
 const path = require('path');
-const {HotModuleReplacementPlugin} = require('webpack');
+const {HotModuleReplacementPlugin, DefinePlugin, ProvidePlugin} = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV; // for win npm i -g win-node-env
 const IS_DEV = NODE_ENV === 'development';
 const GLOBAL_CSS_REGEXP = /\.main\.global\.less$/;
+const DEV_PLUGINS = [new HotModuleReplacementPlugin(), new CleanWebpackPlugin()];
+const COMMON_PLUGINS = [new ProvidePlugin({'React': 'react'}), new DefinePlugin({'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`})];
 
 module.exports = {
     resolve: {
@@ -54,11 +56,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
-            'React': 'react',
-        }),
-    ],
+    plugins: IS_DEV ? DEV_PLUGINS.concat(COMMON_PLUGINS) : COMMON_PLUGINS,
 };

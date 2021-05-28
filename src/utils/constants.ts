@@ -1,5 +1,9 @@
 const NOOP = () => {};
 
+const CLIENT_ID: string | undefined = process.env.CLIENT_ID;
+
+const HREF_FOR_OAUTH2 = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3030/auth&duration=permanent&scope=read identity submit`;
+
 const enum PostControl {
     COMMENTS = 'comments',
     SHARE = 'share',
@@ -36,4 +40,4 @@ const POST_CONTROLS = [
     },
 ];
 
-export {NOOP, PostControl, POST_CONTROLS};
+export {NOOP, HREF_FOR_OAUTH2, PostControl, POST_CONTROLS};
