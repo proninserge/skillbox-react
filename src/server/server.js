@@ -8,7 +8,13 @@ const app = express();
 app.use('/static', express.static('./dist/client'));
 
 app.get('/', (req, res) => {
-    console.log(req.headers.host);
+    res.send(
+        indexTemplate(ReactDOM.renderToString(App())),
+    );
+});
+
+app.get('/auth', (req, res) => {
+    console.log(req.query.code);
     res.send(
         indexTemplate(ReactDOM.renderToString(App())),
     );

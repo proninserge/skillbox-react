@@ -3,7 +3,10 @@ const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV; // for win npm i -g win-node-env
+const IS_DEV = NODE_ENV === 'development';
 const GLOBAL_CSS_REGEXP = /\.main\.global\.less$/;
+const COMMON_PLUGINS = [new webpack.ProvidePlugin({'React': 'react'}), new webpack.DefinePlugin({'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`})];
+
 
 module.exports = {
     target: "node",
@@ -51,9 +54,6 @@ module.exports = {
     optimization: {
         minimize: false,
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            'React': 'react',
-        }),
-    ],
+    devtool: IS_DEV ? 'eval' : false, 
+    plugins: COMMON_PLUGINS,
 };

@@ -1,0 +1,46 @@
+.userBlock {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+}
+
+.userAvatarBox {
+    box-sizing: border-box;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    @media all and (min-width: 1024px) {
+        & {
+            width: 50px;
+            height: 50px;
+            margin-right: 13px;
+        }
+    }
+
+    & img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.userNameBox {
+    display: none;
+
+    @media all and (min-width: 1024px) {
+        & {
+            display: block;
+        }
+    }
+}
