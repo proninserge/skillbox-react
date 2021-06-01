@@ -9,9 +9,19 @@ interface ICardMenuProps {
 
 export function CardMenu(props: ICardMenuProps) {
     const {postId} = props;
+    const [zIndex, setzIndex] = React.useState(1);
+
+    const handleZIndexSwitch = () => {
+        if (zIndex === 1) {
+            setzIndex(zIndex + 1);
+        }
+        if (zIndex > 1) {
+            setzIndex(1);
+        }
+    };
 
     return (
-        <div className={styles.cardMenu}>
+        <div className={styles.cardMenu} style={{zIndex: zIndex}} onClick={handleZIndexSwitch}>
             <Dropdown isOpen={false} button={<CardMenuButton />}>
                 <div className={styles.dropdown}>
                     <PostDropdownControlsList postId={postId} />

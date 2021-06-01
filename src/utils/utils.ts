@@ -1,5 +1,7 @@
 import {PostControl} from './constants';
 import TPostControl from '@utils/react/types/TPostControl';
+import {IPostsDataKeyData, IPostsData} from '@utils/react/hooks/usePostsData';
+import moment from 'moment';
 
 const clickOnPostControl = (controlId: TPostControl, postId: string | undefined) : void => {
     switch (controlId) {
@@ -26,4 +28,10 @@ const clickOnPostControl = (controlId: TPostControl, postId: string | undefined)
     }
   };
 
-export {clickOnPostControl};
+  const toReadableDate = (date: string) => moment(moment.unix(Number(date))).fromNow();
+
+  const getPostRating = (ups: string, downs: string) => Number(ups) - Number(downs);
+
+  const getPosts = (postsArray: Array<IPostsData>) : Array<IPostsDataKeyData> => postsArray.map((post: IPostsData) => post.data);
+
+export {clickOnPostControl, toReadableDate, getPostRating, getPosts};
