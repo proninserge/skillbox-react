@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 describe('CardHeader', () => {
-    const wrapper = shallow(<CardHeader />);
+    const wrapper = shallow(<CardHeader thumbnail={'thumbnail'} created={'created'} title={'title'} author={'author'} />);
 
     test('should render', () => {
         expect(wrapper).toBeDefined();

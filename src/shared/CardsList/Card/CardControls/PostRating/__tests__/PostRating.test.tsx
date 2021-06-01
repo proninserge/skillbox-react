@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 describe('PostRating', () => {
-    const wrapper = shallow(<PostRating />);
+    const wrapper = shallow(<PostRating ups={'1'} downs={'2'} />);
 
     test('should render with the buttons and the rating amount span', () => {
         expect(wrapper).toBeDefined();
