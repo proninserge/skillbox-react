@@ -12,8 +12,8 @@ describe('Card', () => {
         expect(wrapper.find('div.postPreview').isEmptyRender()).toBeFalsy();
     });
 
-    test ('should render snapshot', () => {
-        expect(wrapper).toMatchSnapshot();
-    });
+    // test ('should render snapshot', () => {
+    //     expect(wrapper).toMatchSnapshot();
+    // });
 
 });

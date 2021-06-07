@@ -1,0 +1,30 @@
+@import '~@/variables.global.less';
+
+.postModal {
+    z-index: 100;
+    box-sizing: border-box;
+    position: fixed;
+    width: 80%;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 52px 60px;
+    background-color: @white;
+    box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+}
+
+.closeModal {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+
+.postHeader {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.postMain {
+    overflow-y: auto;
+}

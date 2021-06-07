@@ -1,5 +1,6 @@
 import styles from './cardheader.less';
 import {toReadableDate} from '@utils/utils';
+import PostTitle from './PostTitle/PostTitle';
 
 interface ICardHeaderProps {
     thumbnail: string,
@@ -25,9 +26,7 @@ export function CardHeader(props: ICardHeaderProps) {
                     {toReadableDate(created)}
                 </span>
             </div>
-            <h2 className={styles.title}>
-                <a href="#" className={styles.postLink}>{title}</a>
-            </h2>
+            <PostTitle title={title}/>
         </div>
     );
 }

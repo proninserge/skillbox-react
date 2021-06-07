@@ -12,6 +12,7 @@ const indexTemplate = (content, token) => `
         </head>
         <body>
             <div id="root">${content}</div>
+            <div id="modal_root"></div>
         </body>
     </html>
 `;
