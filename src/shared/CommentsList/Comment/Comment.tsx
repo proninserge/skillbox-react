@@ -1,10 +1,11 @@
 import styles from './comment.less';
 import NewComment from '@components/NewComment/NewComment';
-import tokenContext from '@components/context/tokenContext';
 import preventDefault from '@utils/react/preventDefault';
+import { useStore } from 'react-redux';
 
 const Comment = () => {
-    const token = React.useContext(tokenContext);
+    const store = useStore();
+    const token = store.getState().token;
 
     const handleReplyButtonClick = () => {
         setReplyOpen(true)

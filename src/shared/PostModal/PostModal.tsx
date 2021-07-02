@@ -44,8 +44,9 @@ const PostModal = (props: IPostModalProps) => {
 const PostModalPortaled = (props: IPostModalProps) => {
     const {title, handleCloseButtonClick} = props;
 
-    const node = document.querySelector('#modal_root');
-    if (!node) return null;
+    const node = document.querySelector('#modal_root') as Element;
+    
+    // if (!node) return null;
 
     return ReactDOM.createPortal(<PostModal title={title} handleCloseButtonClick={handleCloseButtonClick} />, node);
 };

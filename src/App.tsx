@@ -4,28 +4,28 @@ import { Layout } from '@components/Layout/Layout';
 import { Header } from '@components/Header/Header';
 import { Content } from '@components/Content/Content';
 import { CardsList } from '@components/CardsList/CardsList';
-import useToken from '@utils/react/hooks/useToken';
-import tokenContext from '@components/context/tokenContext';
-import {UserContextProvider} from '@components/context/userContext';
-import {PostsContextProvider} from '@components/context/postsContext';
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import {rootReducer} from '@store/reducer/root-reducer';
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 function AppComponent() {
-    const [token] = useToken();
-
     return(
-        <tokenContext.Provider value={token}>
-            <UserContextProvider>
-                <Layout>
-                    <Header />
-                    <Content>
-                        <PostsContextProvider>
-                            <CardsList />
-                        </PostsContextProvider>
-                    </Content>
-                </Layout>
-            </UserContextProvider>
-        </tokenContext.Provider>
+        <Provider store={store}>
+            <Layout>
+                <Header />
+                <Content>
+                    <CardsList />
+                </Content>
+            </Layout>
+        </Provider>
     );
 };
 
-export const App = hot(AppComponent)
+const App = hot(AppComponent);
+
+export {App}
