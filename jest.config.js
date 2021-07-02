@@ -6,6 +6,7 @@ module.exports = {
     "\\.(less)": "identity-obj-proxy", // when css modules used
     "^@/(.*)": "<rootDir>/src/$1",
     "^@components(.*)": "<rootDir>/src/shared/$1",
+    "^@store(.*)": "<rootDir>/src/store/$1",
     "^@utils(.*)": "<rootDir>/src/utils/$1",
   },
   transform: {

@@ -28,7 +28,7 @@ const NewComment = (props: INewCommentProps) => {
     return (
         <form className={styles.newCommentForm} onSubmit={preventDefault(handleReplySend)}>
             <textarea className={styles.textArea} ref={newCommentRef} value={comment} onChange={preventDefault(handleCommentInput)}/>
-            <button className={styles.submitComment} type="submit">Комментировать</button>
+            <button type="submit">Комментировать</button>
         </form>
     );
 };

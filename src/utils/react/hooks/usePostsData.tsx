@@ -1,5 +1,5 @@
 import axios from 'axios';
-import tokenContext from '@components/context/tokenContext';
+import { useStore } from 'react-redux';
 
 interface IPostsData {
     data: IPostsDataKeyData;
@@ -23,7 +23,9 @@ interface IPreviewImage {
 
 const usePostsData = () => {
     const [posts, setPosts] = React.useState<Array<IPostsData>>([]);
-    const token = React.useContext(tokenContext);
+    
+    const store = useStore();
+    const token = store.getState().token;
 
     React.useEffect(() => {
         if (token) {
