@@ -5,13 +5,16 @@ import { Header } from '@components/Header/Header';
 import { Content } from '@components/Content/Content';
 import { CardsList } from '@components/CardsList/CardsList';
 
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import {rootReducer} from '@store/reducer/root-reducer';
+import {rootReducer} from '@store/reducers/root-reducer';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk),
+));
 
 function AppComponent() {
     return(
