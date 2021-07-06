@@ -5,7 +5,7 @@ import { useStore } from 'react-redux';
 
 const Comment = () => {
     const store = useStore();
-    const token = store.getState().token;
+    const token = store.getState().USER.token;
 
     const handleReplyButtonClick = () => {
         setReplyOpen(true)

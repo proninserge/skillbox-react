@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useStore } from 'react-redux';
+import { ApiActionCreator } from '@store/api-actions';
+import { useDispatch, useStore } from 'react-redux';
 
 interface IPostsData {
     data: IPostsDataKeyData;
@@ -21,22 +21,17 @@ interface IPreviewImage {
     images: [{source: {url: string, width: string, height: string}}];
 };
 
-const usePostsData = () => {
-    const [posts, setPosts] = React.useState<Array<IPostsData>>([]);
-    
+const usePostsData = () => {  
     const store = useStore();
-    const token = store.getState().token;
+    const token = store.getState().USER.token;
+
+    const posts: IPostsData[] = store.getState().POSTS.posts;
+
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         if (token) {
-            axios.get('https://oauth.reddit.com/best',
-                {headers: {Authorization: `bearer ${token}`, 'Content-Type': 'application/json; charset=UTF-8'}
-            })
-            .then((resp) => {
-                const firstFivePosts = resp.data.data.children.slice(0, 5);
-                setPosts(firstFivePosts);
-            })
-            .catch(console.log);
+            dispatch(ApiActionCreator.savePosts());
         }
     }, [token]);
 
